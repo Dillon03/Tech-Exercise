@@ -1,0 +1,22 @@
+{% extends "shoppinglist/base.html" %}
+
+{% block content %}
+  <h1>Shopping List</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="name">Item Name:</label>
+    <input type="text" name="name" required><br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" required><br>
+    <button type="submit">Add Item</button>
+  </form>
+
+  <ul>
+    {% for item in items %}
+      <li>{{ item.name }} - Quantity: {{ item.quantity }}</li>
+    {% empty %}
+      <li>No items in your shopping list yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

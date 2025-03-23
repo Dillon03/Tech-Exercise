@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping List</title>
+</head>
+<body>
+    <h1>Shopping List</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Item</button>
+    </form>
+
+    <ul>
+        {% for item in items %}
+            <li>{{ item.name }} (x{{ item.quantity }}) - {{ item.added_at|date:"M d, H:i" }}</li>
+        {% empty %}
+            <li>No items in your list yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

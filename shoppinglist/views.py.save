@@ -1,0 +1,12 @@
+django.shortcuts import render, redirect
+from .models import ShoppingItem
+
+def shopping_list(request):
+    items = ShoppingItem.objects.all()
+    return render(request, 'shoppinglist/list.html', {'items': items})
+
+def add_item(request)
+    if request.method == 'POST':
+        name = request.POST['name']
+        quantity = request.POST[
+# Create your views here.
